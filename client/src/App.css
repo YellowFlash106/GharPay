@@ -1,0 +1,9 @@
+/* Global app styles */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; padding:0; background:#f7f8fb; color:#111; }
+.app { max-width:1000px; margin:24px auto; padding:16px; }
+header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+header h1 { margin:0; font-size:20px; }
+nav button { margin-left:8px; padding:8px 12px; background:#0b74de; color:#fff; border:none; border-radius:4px; cursor:pointer; }
+nav button:hover { opacity:0.9; }
+main { background:#fff; padding:16px; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
+button { cursor:pointer; }

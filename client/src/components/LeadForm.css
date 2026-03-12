@@ -1,0 +1,4 @@
+.lead-form label { display:block; font-weight:600; margin-bottom:4px; }
+.lead-form input, .lead-form select, .lead-form textarea { width:100%; padding:8px; margin-bottom:8px; border:1px solid #ddd; border-radius:4px; }
+.lead-form button { background:#28a745; color:#fff; border:none; padding:8px 12px; border-radius:4px; }
+.lead-form h2 { margin-top:0; }

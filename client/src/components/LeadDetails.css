@@ -1,0 +1,4 @@
+.lead-details { padding:12px; }
+.lead-details h3 { margin:0 0 8px 0; }
+.lead-details select, .lead-details input, .lead-details textarea { margin-bottom:8px; }
+.lead-details textarea { width:100%; height:80px; }

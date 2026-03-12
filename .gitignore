@@ -1,4 +1,4 @@
-backend/.env.example
+backend/.env
 frontend/.env.example
 backend/node_modules/
 client/node_modules

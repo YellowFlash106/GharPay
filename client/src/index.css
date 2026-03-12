@@ -1,0 +1,5 @@
+/* Global base styles for CRA entry */
+html,body,#root { height:100%; }
+* { box-sizing:border-box; }
+/* Provide a neutral background unless overridden by App.css */
+body { margin:0; background:#f7f8fb; }

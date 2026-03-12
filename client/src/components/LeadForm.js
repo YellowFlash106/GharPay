@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LeadForm.css';
 import axios from 'axios';
 
 export default function LeadForm(){

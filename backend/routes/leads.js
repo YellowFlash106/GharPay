@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Lead = require('../models/Lead');
 const { assignLead } = require('../utils/assign');
+const Agent = require('../models/Agent');
 
 router.post('/', async (req, res) => {
   try {
@@ -39,6 +40,35 @@ router.post('/:id/visit', async (req, res) => {
   lead.lastActivityAt = new Date();
   await lead.save();
   res.json(lead);
+});
+
+// Manual assign lead to specific agent
+router.post('/:id/assign', async (req, res) => {
+  try {
+    const lead = await Lead.findById(req.params.id);
+    if (!lead) return res.status(404).json({ error: 'not found' });
+    const { agentId } = req.body;
+    const agent = await Agent.findById(agentId);
+    if (!agent) return res.status(404).json({ error: 'agent not found' });
+
+    // decrement previous agent count if exists
+    if (lead.assignedAgent) {
+      const prev = await Agent.findById(lead.assignedAgent);
+      if (prev) { prev.activeLeads = Math.max(0, (prev.activeLeads||0) - 1); await prev.save(); }
+    }
+
+    lead.assignedAgent = agent._id;
+    lead.lastActivityAt = new Date();
+    // update agent counters
+    agent.activeLeads = (agent.activeLeads || 0) + 1;
+    agent.lastAssignedAt = new Date();
+    await agent.save();
+    await lead.save();
+    res.json(lead);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: 'failed' });
+  }
 });
 
 
